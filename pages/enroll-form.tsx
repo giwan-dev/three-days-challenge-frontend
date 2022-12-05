@@ -94,7 +94,7 @@ function GoalSelect() {
                   name={`goal-${goal.title}`}
                   className="peer checked:bg-sky-500"
                   checked={!!selected[goal.title]}
-                  onClick={(e) => {
+                  onChange={(e) => {
                     const checked = e.currentTarget.checked;
 
                     setSelected((prev) => ({
