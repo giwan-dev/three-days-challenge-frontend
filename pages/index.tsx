@@ -97,7 +97,7 @@ function GoalEntity({
         >
           <dialog
             open
-            className="absolute top-1/2 left-1/2 w-full max-w-md -translate-x-1/2 -translate-y-1/2 transform rounded-lg border shadow-lg"
+            className="absolute top-1/2 left-1/2 m-0 w-full max-w-md -translate-x-1/2 -translate-y-1/2 transform rounded-lg border shadow-lg"
             onClick={(e) => {
               e.stopPropagation();
             }}
