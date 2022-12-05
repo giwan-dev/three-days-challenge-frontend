@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { useState } from "react";
 import {
   CHALLENGE_DAY_COUNT,
@@ -8,12 +9,15 @@ import {
 } from "../constants";
 
 export default function EnrollForm() {
+  const { push } = useRouter();
+
   return (
     <main className="text-gray-900">
       <form
         className="space-y-5 p-8"
         onSubmit={(e) => {
           e.preventDefault();
+          push("/");
         }}
       >
         <h1 className="text-2xl font-bold">새로운 챌린지 도전하기</h1>
@@ -60,7 +64,7 @@ export default function EnrollForm() {
 
         <button
           type="submit"
-          className="w-full rounded bg-sky-500 px-4 py-2 text-white"
+          className="w-full rounded-lg bg-sky-500 px-4 py-2 text-white"
         >
           도전하기
         </button>
