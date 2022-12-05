@@ -16,6 +16,8 @@ export default function Complete() {
 
       <p>
         총점 15점 중 <strong>10점</strong>을 획득하셨습니다.
+        <br />
+        10명 중 4등입니다.
       </p>
 
       {accuntInfoStatus === AccountInfoStatus.Empty ? (
