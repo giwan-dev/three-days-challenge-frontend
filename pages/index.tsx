@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { useState } from "react";
 
 const selectedGoals = [
@@ -42,6 +43,8 @@ export default function Dashboard() {
           ))}
         </ul>
       </section>
+
+      <Link href="/complete">(테스트용) 완주 페이지로 가기</Link>
     </main>
   );
 }
