@@ -83,7 +83,7 @@ export const GOALS: {
     validationMethod: "writing",
   },
   {
-    title: "영화 한 편 보고 리뷰 50자 이상  쓰기",
+    title: "영화 한 편 보고 리뷰 50자 이상 쓰기",
     category: "감상",
     validationMethod: "writing",
   },
