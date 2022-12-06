@@ -46,6 +46,8 @@ export default function Dashboard() {
 
       <RankingSection />
 
+      <SocialSection />
+
       <Link href="/complete">(테스트용) 완주 페이지로 가기</Link>
     </main>
   );
@@ -256,6 +258,55 @@ function RankingSection() {
           차이입니다.
         </div>
       )}
+    </section>
+  );
+}
+
+const friends = [
+  { name: "박기완", score: 1 },
+  { name: "박현기", score: 5 },
+  { name: "강민승", score: 4 },
+  { name: "박세라", score: 3 },
+].sort((a, b) => b.score - a.score);
+
+function SocialSection() {
+  return (
+    <section className="rounded-lg border p-4 shadow-md">
+      <h2 className="mb-3 text-lg font-bold">친구</h2>
+
+      <ul className="divide-y">
+        <li className="flex items-center justify-end p-2 text-xs text-gray-400">
+          <span>오늘 획득 점수</span>
+        </li>
+
+        {friends.map((friend) => {
+          const scoreStyle = (() => {
+            if (friend.score < 3) {
+              return "text-red-600";
+            }
+            if (friend.score > 3) {
+              return "text-green-600";
+            }
+          })();
+
+          return (
+            <li
+              key={friend.name}
+              className="flex items-center justify-between p-2"
+            >
+              <span className="font-medium">{friend.name}</span>
+              <span>
+                <span
+                  className={["text-lg", scoreStyle].filter(Boolean).join(" ")}
+                >
+                  {friend.score}
+                </span>
+                <span className="text-sm text-gray-400">/5</span>
+              </span>
+            </li>
+          );
+        })}
+      </ul>
     </section>
   );
 }
