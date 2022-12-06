@@ -78,6 +78,8 @@ function GoalSelect() {
 
   const selectCount = Object.values(selected).filter(Boolean).length;
 
+  const selectedGoals = GOALS.filter((goal) => selected[goal.title]);
+
   return (
     <div className="space-y-2">
       <span className="text-lg font-bold">목표를 선택하세요.</span>
@@ -89,40 +91,42 @@ function GoalSelect() {
       ) : null}
 
       <ul className="grid gap-4 md:grid-cols-2">
-        {GOALS.map((goal) => (
-          <li key={goal.title}>
-            <label className="cursor-pointer space-y-1">
-              <div className="flex items-center space-x-1">
-                <input
-                  type="checkbox"
-                  name={`goal-${goal.title}`}
-                  className="peer checked:bg-sky-500"
-                  checked={!!selected[goal.title]}
-                  onChange={(e) => {
-                    const checked = e.currentTarget.checked;
+        {(selectCount === GOAL_COUNT_CONDITION ? selectedGoals : GOALS).map(
+          (goal) => (
+            <li key={goal.title}>
+              <label className="cursor-pointer space-y-1">
+                <div className="flex items-center space-x-1">
+                  <input
+                    type="checkbox"
+                    name={`goal-${goal.title}`}
+                    className="peer checked:bg-sky-500"
+                    checked={!!selected[goal.title]}
+                    onChange={(e) => {
+                      const checked = e.currentTarget.checked;
 
-                    setSelected((prev) => ({
-                      ...prev,
-                      [goal.title]: checked,
-                    }));
-                  }}
-                />
+                      setSelected((prev) => ({
+                        ...prev,
+                        [goal.title]: checked,
+                      }));
+                    }}
+                  />
 
-                <span className="font-medium peer-checked:text-sky-500 ">
-                  {goal.title}
-                </span>
+                  <span className="font-medium peer-checked:text-sky-500 ">
+                    {goal.title}
+                  </span>
 
-                <span className="rounded-lg border border-slate-400 px-1 py-0.5 text-xs text-slate-400 peer-checked:border-sky-500 peer-checked:text-sky-500">
-                  {goal.category}
-                </span>
-              </div>
+                  <span className="rounded-lg border border-slate-400 px-1 py-0.5 text-xs text-slate-400 peer-checked:border-sky-500 peer-checked:text-sky-500">
+                    {goal.category}
+                  </span>
+                </div>
 
-              <div className="space-x-1 text-sm text-slate-400">
-                <span>{VALIDATION_METHOD_LABELS[goal.validationMethod]}</span>
-              </div>
-            </label>
-          </li>
-        ))}
+                <div className="space-x-1 text-sm text-slate-400">
+                  <span>{VALIDATION_METHOD_LABELS[goal.validationMethod]}</span>
+                </div>
+              </label>
+            </li>
+          )
+        )}
       </ul>
     </div>
   );
