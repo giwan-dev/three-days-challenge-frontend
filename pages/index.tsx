@@ -307,6 +307,13 @@ function SocialSection() {
           );
         })}
       </ul>
+
+      <button
+        type="button"
+        className="mt-4 w-full rounded-lg border-2 border-sky-500 px-4 py-2 text-sky-500"
+      >
+        친구 초대
+      </button>
     </section>
   );
 }
