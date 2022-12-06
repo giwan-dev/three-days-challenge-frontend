@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 const selectedGoals = [
   {
@@ -43,6 +43,8 @@ export default function Dashboard() {
           ))}
         </ul>
       </section>
+
+      <RankingSection />
 
       <Link href="/complete">(테스트용) 완주 페이지로 가기</Link>
     </main>
@@ -219,5 +221,41 @@ function WritingUploader({ onSubmit }: { onSubmit: () => void }) {
         제출하기
       </button>
     </>
+  );
+}
+
+enum RankingSectionStatus {
+  NotPaid,
+  Paid,
+}
+
+function RankingSection() {
+  const [rankingSectionStatus, setRankingSectionStatus] = useState(
+    RankingSectionStatus.NotPaid
+  );
+  const rankingRef = useRef(0);
+
+  return (
+    <section className="rounded-lg border p-4 shadow-md">
+      {rankingSectionStatus === RankingSectionStatus.NotPaid ? (
+        <button
+          type="button"
+          className="w-full rounded-lg bg-sky-500 px-4 py-2 text-white"
+          onClick={() => {
+            rankingRef.current = Math.ceil(Math.random() * 10);
+            setRankingSectionStatus(RankingSectionStatus.Paid);
+          }}
+        >
+          어제 내 등수 확인하기 (500원)
+        </button>
+      ) : (
+        <div className="text-lg font-bold">
+          작심삼일만 삼년째님은 어제 {rankingRef.current}등을 기록했습니다.
+          <br />
+          {rankingRef.current - 1}등과 {Math.ceil(Math.random() * 3)}점
+          차이입니다.
+        </div>
+      )}
+    </section>
   );
 }
