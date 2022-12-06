@@ -274,11 +274,11 @@ function SocialSection() {
     <section className="rounded-lg border p-4 shadow-md">
       <h2 className="mb-3 text-lg font-bold">친구</h2>
 
-      <ul className="divide-y">
-        <li className="flex items-center justify-end p-2 text-xs text-gray-400">
-          <span>오늘 획득 점수</span>
-        </li>
+      <div className="flex items-center justify-end p-2 text-xs text-gray-400">
+        <span>오늘 획득 점수</span>
+      </div>
 
+      <ul className="divide-y">
         {friends.map((friend) => {
           const scoreStyle = (() => {
             if (friend.score < 3) {
