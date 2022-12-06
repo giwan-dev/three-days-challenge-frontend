@@ -311,6 +311,11 @@ function SocialSection() {
       <button
         type="button"
         className="mt-4 w-full rounded-lg border-2 border-sky-500 px-4 py-2 text-sky-500"
+        onClick={() => {
+          const url = new URL(window.location.href);
+          url.pathname = "/enroll-form";
+          navigator.clipboard.writeText(url.toString());
+        }}
       >
         친구 초대
       </button>
