@@ -95,7 +95,7 @@ function GoalSelect() {
           (goal) => (
             <li key={goal.title}>
               <label className="cursor-pointer space-y-1">
-                <div className="flex items-center space-x-1">
+                <div className="flex flex-wrap items-center space-x-1">
                   <input
                     type="checkbox"
                     name={`goal-${goal.title}`}
