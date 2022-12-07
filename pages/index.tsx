@@ -259,7 +259,9 @@ function RankingSection() {
               {rankingRef.current - 1}등과 {Math.ceil(Math.random() * 3)}점
               차이입니다.
             </>
-          ) : "🥇"}
+          ) : (
+            "🥇"
+          )}
         </div>
       )}
     </section>
@@ -274,6 +276,8 @@ const friends = [
 ].sort((a, b) => b.score - a.score);
 
 function SocialSection() {
+  const [copied, setCopied] = useState(false);
+
   return (
     <section className="rounded-lg border p-4 shadow-md">
       <h2 className="mb-3 text-lg font-bold">친구</h2>
@@ -319,9 +323,10 @@ function SocialSection() {
           const url = new URL(window.location.href);
           url.pathname = "/enroll-form";
           navigator.clipboard.writeText(url.toString());
+          setCopied(true);
         }}
       >
-        친구 초대
+        {copied ? "링크 복사됨" : "친구 초대 링크 복사"}
       </button>
     </section>
   );
