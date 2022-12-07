@@ -253,9 +253,13 @@ function RankingSection() {
       ) : (
         <div className="text-lg font-bold">
           작심삼일만 삼년째님은 어제 {rankingRef.current}등을 기록했습니다.
-          <br />
-          {rankingRef.current - 1}등과 {Math.ceil(Math.random() * 3)}점
-          차이입니다.
+          {rankingRef.current > 1 ? (
+            <>
+              <br />
+              {rankingRef.current - 1}등과 {Math.ceil(Math.random() * 3)}점
+              차이입니다.
+            </>
+          ) : "🥇"}
         </div>
       )}
     </section>
